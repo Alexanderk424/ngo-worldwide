@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Verified Winners – NGO WORLDWIDE LTD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f9ff;
+      color: #222;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #004080;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .video-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .video-card:hover {
+      transform: scale(1.03);
+    }
+    video {
+      width: 100%;
+      height: auto;
+      border-bottom: 4px solid #004080;
+    }
+    .video-info {
+      padding: 1rem;
+    }
+    .country-flag {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎉 Verified Global Winners – NGO WORLDWIDE LTD 🎉</h1>
+
+<div class="video-grid" id="videoGrid">
+  <!-- Dynamic videos will be inserted here -->
+</div>
+
+<script>
+  const videos = [
+    {
+      country: "Nigeria",
+      lang: "Yoruba",
+      url: "https://example.com/winner_nigeria.mp4",
+      flag: "🇳🇬"
+    },
+    {
+      country: "Philippines",
+      lang: "Tagalog",
+      url: "https://example.com/winner_philippines.mp4",
+      flag: "🇵🇭"
+    },
+    {
+      country: "France",
+      lang: "French",
+      url: "https://example.com/winner_france.mp4",
+      flag: "🇫🇷"
+    },
+    {
+      country: "Brazil",
+      lang: "Portuguese",
+      url: "https://example.com/winner_brazil.mp4",
+      flag: "🇧🇷"
+    },
+    {
+      country: "India",
+      lang: "Hindi",
+      url: "https://example.com/winner_india.mp4",
+      flag: "🇮🇳"
+    },
+    {
+      country: "Canada",
+      lang: "English/French",
+      url: "https://example.com/winner_canada.mp4",
+      flag: "🇨🇦"
+    },
+    {
+      country: "Russia",
+      lang: "Russian",
+      url: "https://example.com/winner_russia.mp4",
+      flag: "🇷🇺"
+    }
+    // Add more winners here as needed
+  ];
+
+  const container = document.getElementById("videoGrid");
+
+  videos.forEach((vid, index) => {
+    const card = document.createElement("div");
+    card.className = "video-card";
+
+    card.innerHTML = `
+      <video controls preload="metadata" poster="https://example.com/poster.jpg">
+        <source src="${vid.url}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-info">
+        <strong class="country-flag">${vid.flag}</strong> ${vid.country} — <em>${vid.lang}</em><br>
+        <small>Winner Thanks NGO WORLDWIDE LTD</small>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
