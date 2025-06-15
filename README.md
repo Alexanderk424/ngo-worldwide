@@ -1,6 +1,12 @@
 # NGO WORLDWIDE LTD Website
 
-Official website for NGO WORLDWIDE LTD, hosted on GitHub Pages.
+Official website for NGO WORLDWIDE LTD, now live and hosted at [https://ngo-worldwide-impact.onrender.com](https://ngo-worldwide-impact.onrender.com).
+
+---
+
+## Live Website
+
+Check out the live site here: [https://ngo-worldwide-impact.onrender.com](https://ngo-worldwide-impact.onrender.com)
 
 ---
 
