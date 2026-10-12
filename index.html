@@ -4,21 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#102b24">
-  <meta name="description" content="NGO WORLDWIDE LTD — humanitarian support, community development, and worldwide cooperation.">
-  <title>NGO WORLDWIDE LTD | Humanitarian Support</title>
+  <meta name="theme-color" content="#0866ff">
+  <meta name="description" content="NGO WORLDWIDE LTD — humanitarian assistance, community development, charitable support and global logistics information.">
+  <title>NGO WORLDWIDE LTD | Global Charity Network</title>
 
   <style>
     :root {
-      --green: #123b2e;
-      --green2: #1c6248;
-      --gold: #d7b35a;
-      --cream: #f7f6ef;
-      --white: #ffffff;
-      --ink: #1b2923;
-      --muted: #64736b;
-      --border: #dce5de;
-      --danger: #a32d2d;
+      --blue: #0866ff;
+      --deep-blue: #061b49;
+      --cyan: #00d9ff;
+      --purple: #7b61ff;
+      --white: #f7fbff;
+      --muted: #b9cbe7;
+      --panel: rgba(11, 39, 91, .78);
+      --line: rgba(90, 193, 255, .28);
+      --shadow: 0 0 30px rgba(0, 153, 255, .15);
     }
 
     * { box-sizing: border-box; }
@@ -27,577 +27,691 @@
 
     body {
       margin: 0;
+      color: var(--white);
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--ink);
       line-height: 1.65;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(0, 217, 255, .12), transparent 32%),
+        radial-gradient(circle at 90% 35%, rgba(123, 97, 255, .13), transparent 28%),
+        linear-gradient(135deg, #04132f, #071f50 52%, #06152f);
+      padding-bottom: 82px;
     }
 
-    a { color: inherit; }
+    a { color: #79e9ff; }
+    button, input, select, textarea { font: inherit; }
 
-    .topbar {
-      background: #0b241c;
+    button, .btn {
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 13px;
       color: white;
-      padding: 9px 5%;
-      text-align: center;
-      font-size: .88rem;
+      font-weight: 700;
+      background: linear-gradient(110deg, var(--blue), #008edb);
+      box-shadow: 0 0 18px rgba(0, 153, 255, .22);
+      transition: transform .2s, filter .2s;
+    }
+
+    button:hover, .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
+
+    button:disabled { opacity: .6; cursor: wait; }
+
+    .outline {
+      background: rgba(0, 217, 255, .06);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .container {
+      width: min(1160px, 92%);
+      margin: auto;
     }
 
     header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(3, 17, 45, .88);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav {
-      max-width: 1180px;
-      margin: auto;
-      padding: 15px 22px;
+      min-height: 74px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
-      color: var(--green);
+      color: white;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: .4px;
     }
 
-    .logo {
-      width: 48px;
-      height: 48px;
+    .brand-mark {
       display: grid;
       place-items: center;
-      background: var(--green);
-      color: var(--gold);
-      border-radius: 14px;
-      font-size: 1.5rem;
+      width: 45px;
+      height: 45px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #0866ff, #00d9ff);
+      box-shadow: 0 0 24px rgba(0, 217, 255, .32);
+      font-size: 23px;
     }
 
     .brand small {
       display: block;
       color: var(--muted);
-      font-weight: 500;
-      font-size: .75rem;
+      font-size: 11px;
+      letter-spacing: 1.4px;
     }
 
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
     }
 
     nav a {
+      color: #e5f5ff;
       text-decoration: none;
-      font-weight: 600;
-      font-size: .92rem;
+      font-size: 13px;
     }
 
-    nav a:hover { color: var(--green2); }
+    nav a:hover { color: var(--cyan); }
 
     .hero {
-      background:
-        radial-gradient(ellipse at 85% 10%, #397a5a 0, transparent 38%),
-        linear-gradient(135deg, #0b241c, #19513b);
-      color: white;
-      padding: 85px 22px;
+      padding: 90px 0 70px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-inner, .container {
-      max-width: 1100px;
-      margin: auto;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 35px;
     }
 
     .eyebrow {
-      color: var(--gold);
-      font-weight: 800;
-      letter-spacing: 2px;
+      display: inline-block;
+      border: 1px solid var(--line);
+      color: #8cecff;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      font-size: .8rem;
+      background: rgba(0, 217, 255, .06);
     }
 
     h1 {
-      font-size: clamp(2.3rem, 6vw, 4.4rem);
-      line-height: 1.1;
-      max-width: 800px;
-      margin: 18px 0;
+      font-size: clamp(36px, 6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: -2px;
+      margin: 22px 0;
     }
 
-    .hero p {
-      max-width: 680px;
-      font-size: 1.12rem;
-      color: #e5eee7;
+    .gradient-text {
+      background: linear-gradient(90deg, #fff, #6ceaff, #8aa9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
+    .lead { color: var(--muted); max-width: 690px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
 
-    .btn {
-      display: inline-block;
-      border: 0;
-      border-radius: 9px;
-      padding: 12px 18px;
-      background: var(--green2);
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: .96rem;
-    }
-
-    .btn:hover { filter: brightness(1.1); }
-
-    .btn.gold {
-      background: var(--gold);
-      color: #17251d;
-    }
-
-    .btn.outline {
-      background: transparent;
-      border: 1px solid currentColor;
-      color: inherit;
-    }
-
-    section { padding: 64px 22px; }
-
-    section h2 {
-      color: var(--green);
-      font-size: clamp(1.7rem, 4vw, 2.5rem);
-      line-height: 1.2;
-      margin: 0 0 14px;
-    }
-
-    .lead {
-      max-width: 760px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-
-    .cards {
+    .hero-art {
+      min-height: 340px;
+      border-radius: 32px;
+      position: relative;
+      overflow: hidden;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(0, 217, 255, .3), transparent 35%),
+        linear-gradient(145deg, rgba(8, 102, 255, .25), rgba(123, 97, 255, .14));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .globe {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 95px;
+      background: radial-gradient(circle at 30% 25%, #70edff, #0876ff 48%, #061d52 78%);
+      box-shadow: 0 0 60px rgba(0, 217, 255, .3);
+      border: 1px solid rgba(255,255,255,.4);
+    }
+
+    .triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 26px solid transparent;
+      border-right: 26px solid transparent;
+      border-bottom: 45px solid rgba(0, 217, 255, .18);
+      filter: drop-shadow(0 0 12px rgba(0, 217, 255, .6));
+    }
+
+    .t1 { top: 30px; left: 25px; transform: rotate(-20deg); }
+    .t2 { bottom: 35px; right: 30px; transform: rotate(28deg) scale(1.4); }
+    .t3 { top: 55px; right: 40px; transform: rotate(45deg) scale(.7); }
+
+    section { padding: 60px 0; scroll-margin-top: 85px; }
+
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+
+    h2 { font-size: clamp(28px, 4vw, 42px); line-height: 1.2; margin: 0 0 12px; }
+    .section-head p, .muted { color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 26px;
     }
 
     .card {
-      background: white;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 23px;
       padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: 0 5px 18px #183d2810;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
     }
 
-    .card .symbol { font-size: 2rem; }
-    .card h3 { color: var(--green); margin-bottom: 8px; }
+    .card::after {
+      content: "";
+      position: absolute;
+      width: 85px;
+      height: 85px;
+      right: -44px;
+      top: -44px;
+      border: 1px solid rgba(0, 217, 255, .4);
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
 
-    .soft { background: #eaf0e8; }
+    .card h3 { margin: 10px 0; }
+    .card p { color: var(--muted); }
+    .icon { font-size: 36px; }
+    .wide { grid-column: 1 / -1; }
+
+    .visual-panel {
+      min-height: 180px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 58px;
+      margin-bottom: 18px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,217,255,.26), transparent 35%),
+        linear-gradient(130deg, rgba(8,102,255,.28), rgba(123,97,255,.2));
+      border: 1px solid var(--line);
+    }
+
+    .steps { counter-reset: step; }
+    .steps .card h3::before {
+      counter-increment: step;
+      content: counter(step) ". ";
+      color: var(--cyan);
+    }
 
     .notice {
-      padding: 15px 17px;
-      background: #fff8e6;
-      border: 1px solid #e8d49c;
-      border-radius: 10px;
-      color: #594619;
-      margin: 18px 0;
+      border-left: 4px solid var(--cyan);
+      background: rgba(0, 217, 255, .07);
+      border-radius: 12px;
+      padding: 14px 17px;
+      color: #d9f5ff;
     }
 
-    .form-card {
-      max-width: 820px;
-      background: white;
-      padding: 26px;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-    }
-
-    .fields {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 17px;
-    }
-
-    .field { margin-bottom: 16px; }
-    .field.full { grid-column: 1 / -1; }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 700;
-      font-size: .92rem;
-    }
+    form { display: grid; gap: 14px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
 
     input, select, textarea {
       width: 100%;
-      border: 1px solid #cbd7ce;
-      background: white;
-      padding: 12px;
-      border-radius: 8px;
-      font: inherit;
-      color: var(--ink);
-    }
-
-    textarea {
-      min-height: 125px;
-      resize: vertical;
+      padding: 12px 13px;
+      color: white;
+      background: rgba(2, 15, 42, .75);
+      border: 1px solid rgba(119, 191, 255, .35);
+      border-radius: 12px;
+      outline: none;
     }
 
     input:focus, select:focus, textarea:focus {
-      outline: 2px solid #9cc6aa;
-      border-color: var(--green2);
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0, 217, 255, .1);
     }
 
-    .status-message {
-      display: none;
-      margin-top: 16px;
-      padding: 13px;
-      border-radius: 8px;
-      overflow-wrap: anywhere;
-    }
+    select option { background: #071f50; }
+    textarea { resize: vertical; min-height: 120px; }
+    .check-row { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 13px; }
+    .check-row input { width: auto; margin-top: 5px; }
+    .status { min-height: 24px; font-size: 14px; overflow-wrap: anywhere; }
 
-    .status-message.show { display: block; }
-    .status-message.success { background: #e3f5e8; color: #155b2c; }
-    .status-message.error { background: #fbe9e7; color: #872626; }
-
-    .dashboard {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      margin-top: 22px;
-    }
-
-    .dashboard[hidden], [hidden] { display: none !important; }
-
-    .dashboard-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .table-wrap { overflow-x: auto; margin-top: 20px; }
-
-    table {
+    .video-frame {
       width: 100%;
-      border-collapse: collapse;
-      min-width: 720px;
-      font-size: .9rem;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #020b20;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
     }
 
-    th, td {
-      text-align: left;
-      padding: 12px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
+    .video-frame iframe { width: 100%; height: 100%; border: 0; }
+    .video-placeholder { max-width: 480px; }
+    .video-placeholder .icon { font-size: 55px; }
 
-    th { background: #eef3ee; }
+    .staff-area { display: grid; grid-template-columns: .75fr 1.25fr; gap: 18px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 650px; font-size: 13px; }
+    th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); }
+    th { color: #8cecff; }
+    td { color: #e6f3ff; }
+    td button { padding: 7px 10px; font-size: 12px; }
 
     footer {
-      background: #0b241c;
-      color: #e6eee8;
-      padding: 38px 22px;
+      border-top: 1px solid var(--line);
+      padding: 35px 0 95px;
+      color: var(--muted);
+      background: rgba(2, 10, 29, .55);
     }
 
-    footer a { color: var(--gold); }
-    footer .container { display: grid; gap: 12px; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px; }
+    footer a { text-decoration: none; }
+    .small { font-size: 12px; color: var(--muted); }
 
-    .small { font-size: .88rem; color: var(--muted); }
-    .footer-small { font-size: .88rem; color: #bdcec2; }
+    .ticker {
+      position: fixed;
+      z-index: 50;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px max(4%, calc((100% - 1160px) / 2));
+      background: rgba(3, 17, 45, .96);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(0, 217, 255, .45);
+      box-shadow: 0 -6px 30px rgba(0, 153, 255, .15);
+    }
 
-    @media (max-width: 650px) {
-      .nav { align-items: flex-start; }
-      nav { gap: 11px; }
-      .hero { padding: 60px 22px; }
-      .fields { grid-template-columns: 1fr; }
-      .field.full { grid-column: auto; }
-      .form-card { padding: 18px; }
+    .ticker-label {
+      white-space: nowrap;
+      color: var(--cyan);
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    #tickerMessage { flex: 1; font-size: 13px; color: #edf9ff; }
+    .ticker button { padding: 7px 10px; font-size: 12px; }
+    .ticker-actions { display: flex; gap: 6px; }
+
+    @media (max-width: 850px) {
+      .hero-grid, .staff-area { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { padding-top: 55px; }
+      .hero-art { min-height: 280px; }
+      nav { gap: 9px; }
+      nav a { font-size: 12px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      nav { justify-content: flex-start; }
+      .grid, .form-grid, .footer-grid { grid-template-columns: 1fr; }
+      .wide { grid-column: auto; }
+      .card { padding: 19px; }
+      .hero { padding: 45px 0; }
+      h1 { letter-spacing: -1px; }
+      .ticker { gap: 7px; padding: 9px 3%; }
+      .ticker-label { font-size: 9px; }
+      #tickerMessage { font-size: 11px; }
+      .ticker button { padding: 6px 7px; font-size: 11px; }
+      body { padding-bottom: 85px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    Humanitarian Support • Community Development • Worldwide Cooperation
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <span class="brand-mark">🌍</span>
+      <span>NGO WORLDWIDE LTD<small>HUMANITY • SERVICE • COMMUNITY</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#mission">Mission</a>
+      <a href="#programs">Programs</a>
+      <a href="#global">Global Network</a>
+      <a href="#live">Live</a>
+      <a href="#apply">Apply</a>
+      <a href="#contact">Contact</a>
+      <a href="#staff">Staff</a>
+    </nav>
   </div>
+</header>
 
-  <header>
-    <div class="nav">
-      <a class="brand" href="#home" style="text-decoration:none">
-        <span class="logo" aria-hidden="true">🌍</span>
-        <span>
-          NGO WORLDWIDE LTD
-          <small>Compassion • Cooperation • Community</small>
-        </span>
-      </a>
-
-      <nav aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#mission">Our Mission</a>
-        <a href="#programs">Focus Areas</a>
-        <a href="#apply">Apply for Support</a>
-        <a href="#contact">Contact</a>
-        <a href="#staff">Staff</a>
-      </nav>
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">A connected world of compassion</span>
+        <h1>Building a better world through <span class="gradient-text">humanity and service.</span></h1>
+        <p class="lead">
+          NGO WORLDWIDE LTD is presented here as a global charity and community-support initiative
+          focused on kindness, practical assistance, community development and responsible service.
+          Explore our mission, learn about support programs, or submit an application for review.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#apply">Request Support ↗</a>
+          <a class="btn outline" href="#mission">Explore Our Mission</a>
+        </div>
+        <p class="small">Support is subject to eligibility, available resources and program verification. Submitting an application does not guarantee assistance.</p>
+      </div>
+      <div class="hero-art" aria-label="Decorative glowing globe">
+        <span class="triangle t1"></span>
+        <span class="triangle t2"></span>
+        <span class="triangle t3"></span>
+        <div class="globe" aria-hidden="true">🌐</div>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-inner">
-        <div class="eyebrow">Compassion in action</div>
-        <h1>Working together for a better future.</h1>
-        <p>
-          Welcome to NGO WORLDWIDE LTD. Our mission is to promote
-          compassion, responsible humanitarian initiatives, community
-          development, and cooperation that helps people work toward
-          better futures.
-        </p>
-        <div class="actions">
-          <a class="btn gold" href="#apply">Apply for Support</a>
-          <a class="btn outline" href="#mission">Discover Our Mission</a>
-        </div>
+  <section id="mission">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Our purpose</span>
+        <h2>Compassion with practical action</h2>
+        <p>Our website brings together charitable goals, community participation and information about responsible assistance.</p>
       </div>
-    </section>
-
-    <section id="mission">
-      <div class="container">
-        <h2>Our Mission</h2>
-        <p class="lead">
-          To promote compassion, community support, cooperation, and
-          responsible humanitarian initiatives that help people work
-          toward better futures.
-        </p>
-
-        <div class="cards">
-          <article class="card">
-            <div class="symbol">💚</div>
-            <h3>Compassion</h3>
-            <p>Promoting dignity, kindness, and respectful support for people and communities.</p>
-          </article>
-          <article class="card">
-            <div class="symbol">🤝</div>
-            <h3>Cooperation</h3>
-            <p>Encouraging responsible partnerships and shared community efforts.</p>
-          </article>
-          <article class="card">
-            <div class="symbol">🌱</div>
-            <h3>Development</h3>
-            <p>Supporting opportunities for communities to build sustainable futures.</p>
-          </article>
-        </div>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">🤝</div>
+          <h3>Humanitarian Support</h3>
+          <p>Promote access to essential assistance for people and families experiencing hardship, subject to available resources.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🏘️</div>
+          <h3>Community Development</h3>
+          <p>Encourage community-led initiatives, education, practical skills and collaboration for sustainable progress.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💙</div>
+          <h3>Kindness and Dignity</h3>
+          <p>Support respectful service, transparency, inclusion and the dignity of every person.</p>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="soft" id="programs">
-      <div class="container">
-        <h2>Our Areas of Focus</h2>
-        <p class="lead">
-          These are areas of focus, not a claim that every program is
-          currently operating. Specific activities and outcomes should
-          be announced only after verification.
-        </p>
-
-        <div class="cards">
-          <article class="card">
-            <div class="symbol">🏘️</div>
-            <h3>Community Support</h3>
-            <p>Community needs, local cooperation, and development initiatives.</p>
-          </article>
-          <article class="card">
-            <div class="symbol">🧡</div>
-            <h3>Humanitarian Outreach</h3>
-            <p>Responsible approaches to identifying needs and coordinating assistance.</p>
-          </article>
-          <article class="card">
-            <div class="symbol">🌐</div>
-            <h3>Community Partnerships</h3>
-            <p>Constructive cooperation with individuals and organizations.</p>
-          </article>
-          <article class="card">
-            <div class="symbol">📊</div>
-            <h3>Transparency</h3>
-            <p>Clear communication, accountability, and evidence-based reporting.</p>
-          </article>
-        </div>
+  <section id="programs">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Areas of interest</span>
+        <h2>Programs and community initiatives</h2>
+        <p>Program descriptions should be updated to reflect the services actually operating and the resources available.</p>
       </div>
-    </section>
+      <div class="grid">
+        <article class="card">
+          <div class="visual-panel" aria-hidden="true">🥫</div>
+          <h3>Essential Needs</h3>
+          <p>Information about food, clothing and other essential-needs support where a verified program is available.</p>
+        </article>
+        <article class="card">
+          <div class="visual-panel" aria-hidden="true">📚</div>
+          <h3>Education and Skills</h3>
+          <p>Community learning, skills development and educational opportunities through confirmed initiatives.</p>
+        </article>
+        <article class="card">
+          <div class="visual-panel" aria-hidden="true">🫂</div>
+          <h3>Family and Community</h3>
+          <p>Community outreach and family-support activities based on assessed needs and available resources.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <section id="apply">
-      <div class="container">
-        <h2>Beneficiary Support Application</h2>
-        <p class="lead">
-          Use this form to express a request for support. Submission
-          does not guarantee assistance or approval.
-        </p>
+  <section id="global">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Connected across borders</span>
+        <h2>Global charity network and logistics</h2>
+        <p>International cooperation can help communities share knowledge and coordinate responsible delivery of approved supplies.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="visual-panel" aria-hidden="true">🌍</div>
+          <h3>Worldwide Connections</h3>
+          <p>Build transparent relationships with community groups, volunteers and verified partner organizations.</p>
+        </article>
+        <article class="card">
+          <div class="visual-panel" aria-hidden="true">🚢</div>
+          <h3>Ocean Cargo and Shipping</h3>
+          <p>Learn about sea freight, cargo documentation, customs requirements and responsible transportation of approved relief goods.</p>
+        </article>
+        <article class="card">
+          <div class="visual-panel" aria-hidden="true">📦</div>
+          <h3>Delivery Coordination</h3>
+          <p>Plan and track authorized shipments with documented carriers, confirmed destinations and clear delivery records.</p>
+        </article>
+      </div>
+      <p class="notice" style="margin-top:20px">
+        Important: These sections describe areas of interest. Do not treat them as proof of an operating shipping service,
+        international partnership, guaranteed delivery or funded aid program unless supporting records are available.
+      </p>
+    </div>
+  </section>
 
-        <div class="notice">
-          Please submit only information needed to assess your request.
-          Do not enter passwords, bank PINs, card details, or other
-          confidential financial credentials.
+  <section id="live">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Updates and community stories</span>
+        <h2>Live stream and announcements</h2>
+        <p>Use this space for verified community updates, events, educational broadcasts and recorded activities.</p>
+      </div>
+      <div class="card">
+        <div class="video-frame" id="livePlayer">
+          <div class="video-placeholder">
+            <div class="icon">▶️</div>
+            <h3>Live stream coming soon</h3>
+            <p class="muted">Add your own YouTube Live video ID in the website code to show your authorized broadcast here.</p>
+          </div>
+        </div>
+        <p class="small">Only display broadcasts that you own or have permission to embed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="apply">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Beneficiary application</span>
+        <h2>Request community support</h2>
+        <p>Provide accurate information so an authorized team can review your request.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Before you apply</h3>
+          <p>Applications are reviewed according to program eligibility and available resources. You will not be charged an application fee through this form.</p>
+          <p class="notice">Never submit bank passwords, PINs, one-time passcodes or payment-card security codes. Avoid uploading sensitive identity documents through an unsecured form.</p>
+          <p class="small">Only submit information you are comfortable sharing with the organization operating this website.</p>
         </div>
 
-        <div class="form-card">
+        <div class="card" style="grid-column: span 2" id="applicationCard">
           <form id="applicationForm">
-            <div class="fields">
-              <div class="field">
+            <div class="form-grid">
+              <div>
                 <label for="applicant_name">Full name *</label>
-                <input id="applicant_name" name="applicant_name"
-                       autocomplete="name" maxlength="120" required>
+                <input id="applicant_name" name="applicant_name" autocomplete="name" required maxlength="120">
               </div>
-
-              <div class="field">
-                <label for="email">Email address</label>
-                <input id="email" name="email" type="email"
-                       autocomplete="email" maxlength="254">
+              <div>
+                <label for="email">Email address *</label>
+                <input id="email" name="email" type="email" autocomplete="email" required maxlength="180">
               </div>
-
-              <div class="field">
+              <div>
                 <label for="phone">Phone number</label>
-                <input id="phone" name="phone" type="tel"
-                       autocomplete="tel" maxlength="40">
+                <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40">
               </div>
-
-              <div class="field">
-                <label for="country">Country</label>
-                <input id="country" name="country"
-                       autocomplete="country-name" maxlength="100">
+              <div>
+                <label for="country">Country *</label>
+                <input id="country" name="country" autocomplete="country-name" required maxlength="100">
               </div>
-
-              <div class="field full">
-                <label for="location">Town or general location</label>
-                <input id="location" name="location"
-                       autocomplete="address-level2" maxlength="150">
+              <div>
+                <label for="location">Town or region</label>
+                <input id="location" name="location" autocomplete="address-level1" maxlength="120">
               </div>
-
-              <div class="field full">
-                <label for="support_category">Support category *</label>
+              <div>
+                <label for="support_category">Type of support *</label>
                 <select id="support_category" name="support_category" required>
                   <option value="">Select a category</option>
-                  <option value="Education">Education</option>
-                  <option value="Food">Food</option>
-                  <option value="Healthcare">Healthcare</option>
-                  <option value="Community Support">Community Support</option>
+                  <option value="Essential needs">Essential needs</option>
+                  <option value="Education and skills">Education and skills</option>
+                  <option value="Family and community">Family and community</option>
+                  <option value="Community project">Community project</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
-
-              <div class="field full">
-                <label for="description">Describe your request *</label>
-                <textarea id="description" name="description"
-                          maxlength="3000" required></textarea>
-              </div>
-
-              <div class="field full">
-                <label>
-                  <input type="checkbox" id="consent" required
-                         style="width:auto;margin-right:8px">
-                  I agree that the information I provide may be used to
-                  review this support request.
-                </label>
-              </div>
             </div>
-
-            <button class="btn" type="submit" id="submitApplication">
-              Submit Application
-            </button>
-            <div id="applicationMessage" class="status-message"
-                 role="status" aria-live="polite"></div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section class="soft" id="transparency">
-      <div class="container">
-        <h2>Transparency and Accountability</h2>
-        <p class="lead">
-          Authentic organizational registration details, leadership
-          information, financial reports, program activities, and
-          outcomes should be published only when supported by genuine,
-          verifiable records.
-        </p>
-        <p>
-          Applicants should rely on confirmed communications from the
-          organization and should never pay an unofficial fee or share
-          banking passwords to request assistance.
-        </p>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <h2>Contact Our Support Center</h2>
-        <p class="lead">
-          For general inquiries, contact the support center by email.
-        </p>
-        <div class="card">
-          <h3>📬 NGO WORLDWIDE LTD</h3>
-          <p>
-            Support Center:
-            <a href="mailto:ngoworldwideltdcenter@gmail.com">
-              ngoworldwideltdcenter@gmail.com
-            </a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="staff">
-      <div class="container">
-        <h2>Staff Portal</h2>
-        <p class="lead">
-          Authorized staff can sign in to review applications. Access
-          depends on Supabase authentication and database permissions.
-        </p>
-
-        <div class="form-card">
-          <form id="staffLogin">
-            <div class="field">
-              <label for="staffEmail">Staff email</label>
-              <input id="staffEmail" type="email"
-                     autocomplete="username" required>
-            </div>
-            <div class="field">
-              <label for="staffPassword">Password</label>
-              <input id="staffPassword" type="password"
-                     autocomplete="current-password" required>
-            </div>
-            <button class="btn" type="submit">Sign In</button>
-            <button class="btn outline" type="button" id="signOut"
-                    hidden>Sign Out</button>
-            <div id="staffMessage" class="status-message"
-                 role="status" aria-live="polite"></div>
-          </form>
-        </div>
-
-        <div id="staffDashboard" class="dashboard" hidden>
-          <div class="dashboard-top">
             <div>
-              <h3>Beneficiary Applications</h3>
-              <p class="small">Application records are available only when database access is authorized.</p>
+              <label for="description">Explain your request *</label>
+              <textarea id="description" name="description" required maxlength="3000" placeholder="Describe the support you are requesting. Please do not include passwords or financial security details."></textarea>
             </div>
-            <button class="btn" type="button" id="refreshApplications">
-              Refresh
-            </button>
-          </div>
+            <label class="check-row">
+              <input type="checkbox" id="consent" required>
+              <span>I confirm that the information provided is accurate and consent to its use for reviewing this application.</span>
+            </label>
+            <button id="submitApplication" type="submit">Submit Application</button>
+            <div class="status" id="applicationStatus" role="status" aria-live="polite"></div>
+            <p class="small">A reference number may be displayed if the server accepts your application. It is not a promise of funding or approval.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div id="dashboardMessage" class="status-message"
-               role="status" aria-live="polite"></div>
+  <section id="transparency">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Trust and accountability</span>
+        <h2>Transparency matters</h2>
+        <p>Trust is built through clear records, honest communication and responsible handling of applications.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">🧾</div>
+          <h3>Clear Records</h3>
+          <p>Maintain accurate records of approved programs, donations, expenses and deliveries.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🔐</div>
+          <h3>Data Protection</h3>
+          <p>Limit access to personal information and configure database permissions for authorized staff only.</p>
+        </article>
+        <article class="card">
+          <div class="icon">📣</div>
+          <h3>Honest Updates</h3>
+          <p>Publish verified reports and clearly explain eligibility, limitations, timelines and available services.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Contact the support center</span>
+        <h2>Stay connected</h2>
+        <p>For questions about the website or an application, use the contact details below.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">✉️</div>
+          <h3>Email Support Center</h3>
+          <p><a href="mailto:ngoworldwideltdcenter@gmail.com">ngoworldwideltdcenter@gmail.com</a></p>
+          <a class="btn outline" href="mailto:ngoworldwideltdcenter@gmail.com">Send Email</a>
+        </article>
+        <article class="card">
+          <div class="icon">🌐</div>
+          <h3>Online Information</h3>
+          <p>Visit this website for published programs, verified updates and application information.</p>
+          <a class="btn outline" href="#programs">View Programs</a>
+        </article>
+        <article class="card">
+          <div class="icon">🛡️</div>
+          <h3>Fraud Awareness</h3>
+          <p>Verify any claimed award, delivery fee or funding offer independently before sending money or personal information.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="staff">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Authorized personnel</span>
+        <h2>Staff portal</h2>
+        <p>This area requires Supabase authentication and strict database permissions before it is used for real beneficiary data.</p>
+      </div>
+
+      <div class="staff-area">
+        <div class="card">
+          <h3>Staff sign in</h3>
+          <form id="staffLoginForm">
+            <div>
+              <label for="staffEmail">Authorized staff email</label>
+              <input id="staffEmail" type="email" autocomplete="username" required>
+            </div>
+            <div>
+              <label for="staffPassword">Password</label>
+              <input id="staffPassword" type="password" autocomplete="current-password" required>
+            </div>
+            <button type="submit" id="staffLoginButton">Sign In</button>
+            <button type="button" class="outline" id="staffLogoutButton" hidden>Sign Out</button>
+            <div class="status" id="staffStatus" role="status" aria-live="polite"></div>
+          </form>
+          <p class="small">Staff accounts must be created by an authorized administrator. Do not share staff credentials.</p>
+        </div>
+
+        <div class="card">
+          <h3>Application records</h3>
+          <p class="small">Records will appear only if authentication, database permissions and the table structure are correctly configured.</p>
+          <button type="button" id="loadApplications" class="outline" disabled>Refresh Records</button>
+          <div class="status" id="recordsStatus" role="status" aria-live="polite"></div>
           <div class="table-wrap">
             <table>
               <thead>
@@ -605,282 +719,337 @@
                   <th>Reference</th>
                   <th>Applicant</th>
                   <th>Category</th>
-                  <th>Date submitted</th>
+                  <th>Submitted</th>
                   <th>Status</th>
-                  <th>Update status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody id="applicationRows">
-                <tr><td colspan="6">Sign in with an authorized staff account to load records.</td></tr>
+                <tr><td colspan="6">Sign in with an authorized staff account to check records.</td></tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <strong>NGO WORLDWIDE LTD</strong>
-      <div>Humanitarian Support • Community Development • Worldwide Cooperation</div>
-      <div>
-        <a href="mailto:ngoworldwideltdcenter@gmail.com">
-          ngoworldwideltdcenter@gmail.com
-        </a>
-      </div>
-      <div class="footer-small">
-        Website content is informational. Organizational details and
-        program claims should be independently verified.
-      </div>
-      <div class="footer-small">
-        © <span id="year"></span> NGO WORLDWIDE LTD. All rights reserved.
-      </div>
     </div>
-  </footer>
+  </section>
+</main>
 
-  <!-- Supabase's publishable/anon key is intended for browser use.
-       Never put a service_role or secret key in this file. -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <a class="brand" href="#home"><span class="brand-mark">🌍</span><span>NGO WORLDWIDE LTD</span></a>
+      <p>Humanity, community participation and responsible service.</p>
+      <p class="small">This website is not affiliated with Meta Platforms, Inc. Its blue visual style is an independent design choice.</p>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <p><a href="#mission">Our Mission</a></p>
+      <p><a href="#programs">Programs</a></p>
+      <p><a href="#global">Global Network</a></p>
+      <p><a href="#apply">Apply for Support</a></p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p><a href="mailto:ngoworldwideltdcenter@gmail.com">ngoworldwideltdcenter@gmail.com</a></p>
+      <p class="small">Program availability and any claims of registration, partnerships or financial awards must be independently verified.</p>
+    </div>
+  </div>
+  <div class="container small" style="margin-top:24px">
+    © <span id="year"></span> NGO WORLDWIDE LTD. All rights reserved.
+  </div>
+</footer>
 
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+<div class="ticker" role="region" aria-label="Website announcements">
+  <span class="ticker-label">NOTICE</span>
+  <span id="tickerMessage" aria-live="polite">Welcome to NGO WORLDWIDE LTD — explore our mission and community initiatives.</span>
+  <div class="ticker-actions">
+    <button type="button" class="outline" id="tickerPause" aria-pressed="false">Pause</button>
+    <button type="button" class="outline" id="tickerNext" aria-label="Next announcement">Next ›</button>
+  </div>
+</div>
 
-    /*
-      SETUP REQUIRED:
-      1. Enter your Supabase publishable/anon key below.
-      2. Deploy a secure Edge Function for application submissions.
-      3. Configure staff-only database permissions and authorization.
-      Do not put a service_role or secret key here.
-    */
-    const SUPABASE_URL =
-      "https://ebfzujxrrmbifxtpzlse.supabase.co";
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  "use strict";
 
-    const SUPABASE_PUBLISHABLE_KEY =
-      "PASTE_YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY_HERE";
+  // Public browser key only. Never place a Supabase service-role/secret key here.
+  const SUPABASE_URL = "https://ebfzujxrrmbifxtpzlse.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_dfz51b3qTB057jXrW5t_xQ_sBf1GiK9";
 
-    const APPLICATION_FUNCTION_URL =
-      SUPABASE_URL + "/functions/v1/submit-beneficiary-application";
+  const APPLICATION_ENDPOINT =
+    "https://ebfzujxrrmbifxtpzlse.supabase.co/functions/v1/submit-beneficiary-application";
 
-    let supabaseClient = null;
-    let currentUser = null;
+  // Optional: paste the video ID from your own YouTube Live video.
+  // Example video URL: https://www.youtube.com/watch?v=YOUR_VIDEO_ID
+  const YOUTUBE_LIVE_ID = "";
 
-    const form = document.getElementById("applicationForm");
-    const applicationMessage =
-      document.getElementById("applicationMessage");
-    const staffMessage = document.getElementById("staffMessage");
-    const dashboardMessage =
-      document.getElementById("dashboardMessage");
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    function showMessage(element, message, type) {
-      element.textContent = message;
-      element.className = "status-message show " + type;
+  // Announcement messages rotate every five minutes.
+  const announcements = [
+    "Welcome to NGO WORLDWIDE LTD — explore our mission and community initiatives.",
+    "Community support requests are subject to eligibility and available resources.",
+    "Protect your privacy: never share passwords, PINs or one-time passcodes.",
+    "Check published program details and verify information before making decisions.",
+    "International cargo and delivery services require verified carriers and documentation.",
+    "Submitting a beneficiary application does not guarantee approval or financial assistance.",
+    "Contact the support center at ngoworldwideltdcenter@gmail.com for website enquiries."
+  ];
+
+  let announcementIndex = 0;
+  let tickerPaused = false;
+  let tickerTimer = null;
+
+  const tickerMessage = document.getElementById("tickerMessage");
+  const tickerPause = document.getElementById("tickerPause");
+
+  function showAnnouncement() {
+    tickerMessage.textContent = announcements[announcementIndex];
+  }
+
+  function nextAnnouncement() {
+    announcementIndex = (announcementIndex + 1) % announcements.length;
+    showAnnouncement();
+  }
+
+  function startTickerTimer() {
+    if (tickerTimer) clearInterval(tickerTimer);
+    tickerTimer = setInterval(() => {
+      if (!tickerPaused) nextAnnouncement();
+    }, 5 * 60 * 1000);
+  }
+
+  document.getElementById("tickerNext").addEventListener("click", nextAnnouncement);
+
+  tickerPause.addEventListener("click", () => {
+    tickerPaused = !tickerPaused;
+    tickerPause.textContent = tickerPaused ? "Resume" : "Pause";
+    tickerPause.setAttribute("aria-pressed", String(tickerPaused));
+  });
+
+  showAnnouncement();
+  startTickerTimer();
+
+  // Load the optional YouTube video only when an ID has been configured.
+  if (YOUTUBE_LIVE_ID.trim()) {
+    const player = document.getElementById("livePlayer");
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://www.youtube-nocookie.com/embed/" +
+      encodeURIComponent(YOUTUBE_LIVE_ID.trim());
+    iframe.title = "NGO WORLDWIDE LTD video stream";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+    player.replaceChildren(iframe);
+  }
+
+  // Beneficiary application submission.
+  const applicationForm = document.getElementById("applicationForm");
+  const applicationStatus = document.getElementById("applicationStatus");
+  const submitApplication = document.getElementById("submitApplication");
+
+  applicationForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    applicationStatus.textContent = "";
+    submitApplication.disabled = true;
+    submitApplication.textContent = "Submitting…";
+
+    const payload = {
+      applicant_name: document.getElementById("applicant_name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      country: document.getElementById("country").value.trim(),
+      location: document.getElementById("location").value.trim(),
+      support_category: document.getElementById("support_category").value,
+      description: document.getElementById("description").value.trim()
+    };
+
+    try {
+      const response = await fetch(APPLICATION_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_PUBLISHABLE_KEY
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.error || result.message ||
+          "The server could not accept the application. Please try again later.");
+      }
+
+      const reference = result.reference_code || result.reference ||
+        (result.data && result.data.reference_code);
+
+      applicationForm.reset();
+      applicationStatus.textContent = reference
+        ? "Application received. Reference: " + String(reference) +
+          ". Keep this reference for enquiries."
+        : "The server accepted your request. Please keep any reference shown by the support team.";
+    } catch (error) {
+      applicationStatus.textContent =
+        "Submission failed: " + (error.message || "Please check your connection and try again.");
+    } finally {
+      submitApplication.disabled = false;
+      submitApplication.textContent = "Submit Application";
     }
+  });
 
-    function clearMessage(element) {
-      element.textContent = "";
-      element.className = "status-message";
-    }
+  // Staff portal: Supabase Auth + database access.
+  // Ensure RLS policies restrict records to authorized staff.
+  let supabaseClient = null;
+  let currentStaffSession = null;
 
-    function setupSupabase() {
-      if (!window.supabase) {
-        throw new Error("The Supabase library did not load. Check your internet connection.");
-      }
+  const staffStatus = document.getElementById("staffStatus");
+  const recordsStatus = document.getElementById("recordsStatus");
+  const staffLoginButton = document.getElementById("staffLoginButton");
+  const staffLogoutButton = document.getElementById("staffLogoutButton");
+  const loadApplicationsButton = document.getElementById("loadApplications");
+  const applicationRows = document.getElementById("applicationRows");
 
-      if (
-        !SUPABASE_PUBLISHABLE_KEY ||
-        SUPABASE_PUBLISHABLE_KEY.includes("PASTE_YOUR_")
-      ) {
-        throw new Error("Website setup is incomplete: add your Supabase publishable/anon key first.");
-      }
-
-      if (!supabaseClient) {
-        supabaseClient = window.supabase.createClient(
-          SUPABASE_URL,
-          SUPABASE_PUBLISHABLE_KEY
-        );
-      }
-
-      return supabaseClient;
-    }
-
-    // Public form: sends the request to a server-side function.
-    // It does NOT directly insert into the protected database table.
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault();
-      clearMessage(applicationMessage);
-
-      const button = document.getElementById("submitApplication");
-      button.disabled = true;
-      button.textContent = "Submitting...";
-
-      try {
-        setupSupabase();
-
-        const payload = {
-          applicant_name: document.getElementById("applicant_name").value.trim(),
-          email: document.getElementById("email").value.trim(),
-          phone: document.getElementById("phone").value.trim(),
-          country: document.getElementById("country").value.trim(),
-          location: document.getElementById("location").value.trim(),
-          support_category: document.getElementById("support_category").value,
-          description: document.getElementById("description").value.trim()
-        };
-
-        if (!payload.applicant_name ||
-            !payload.support_category ||
-            !payload.description) {
-          throw new Error("Please complete all required fields.");
-        }
-
-        const response = await fetch(APPLICATION_FUNCTION_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "apikey": SUPABASE_PUBLISHABLE_KEY
-          },
-          body: JSON.stringify(payload)
-        });
-
-        const result = await response.json().catch(() => ({}));
-
-        if (!response.ok) {
-          throw new Error(
-            result.error ||
-            "The secure application service is not ready or rejected this request."
-          );
-        }
-
-        form.reset();
-
-        const reference = result.reference_code;
-        showMessage(
-          applicationMessage,
-          reference
-            ? "Your request was received. Reference: " + reference +
-              ". Keep this reference for your records."
-            : "Your request was received. Keep any reference provided by the organization.",
-          "success"
-        );
-      } catch (error) {
-        showMessage(
-          applicationMessage,
-          error.message || "Submission failed. Please try again later.",
-          "error"
-        );
-      } finally {
-        button.disabled = false;
-        button.textContent = "Submit Application";
-      }
-    });
-
-    // Staff login: users must already have an authorized account.
-    document.getElementById("staffLogin").addEventListener(
-      "submit", async function(event) {
-        event.preventDefault();
-        clearMessage(staffMessage);
-
-        try {
-          const client = setupSupabase();
-          const email = document.getElementById("staffEmail").value.trim();
-          const password = document.getElementById("staffPassword").value;
-
-          const { data, error } = await client.auth.signInWithPassword({
-            email,
-            password
-          });
-
-          if (error) throw error;
-
-          currentUser = data.user;
-          document.getElementById("signOut").hidden = false;
-          document.getElementById("staffPassword").value = "";
-
-          showMessage(
-            staffMessage,
-            "Signed in. Checking access to staff application records...",
-            "success"
-          );
-
-          document.getElementById("staffDashboard").hidden = false;
-          await loadApplications();
-        } catch (error) {
-          showMessage(
-            staffMessage,
-            error.message || "Staff sign-in failed.",
-            "error"
-          );
-        }
-      }
+  if (window.supabase && window.supabase.createClient) {
+    supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
     );
 
-    async function loadApplications() {
-      clearMessage(dashboardMessage);
+    supabaseClient.auth.getSession().then(({ data, error }) => {
+      if (error) {
+        staffStatus.textContent = "Unable to check staff session.";
+        return;
+      }
+      currentStaffSession = data.session;
+      updateStaffUI();
+    });
+  } else {
+    staffStatus.textContent = "The authentication library could not load. Check your internet connection.";
+  }
 
-      const rows = document.getElementById("applicationRows");
-      rows.replaceChildren();
+  function updateStaffUI() {
+    const signedIn = Boolean(currentStaffSession);
+    staffLogoutButton.hidden = !signedIn;
+    loadApplicationsButton.disabled = !signedIn;
+    staffLoginButton.disabled = signedIn;
+    staffStatus.textContent = signedIn
+      ? "Signed in. Database permissions will determine which records you can access."
+      : "Sign in using an authorized staff account.";
+  }
 
-      try {
-        const client = setupSupabase();
+  document.getElementById("staffLoginForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!supabaseClient) {
+      staffStatus.textContent = "Authentication is not available.";
+      return;
+    }
 
-        const { data, error } = await client
-          .from("beneficiary_applications")
-          .select("id, reference_code, applicant_name, support_category, submitted_at, status")
-          .order("submitted_at", { ascending: false })
-          .limit(200);
+    staffLoginButton.disabled = true;
+    staffStatus.textContent = "Signing in…";
 
-        if (error) throw error;
+    try {
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: document.getElementById("staffEmail").value.trim(),
+        password: document.getElementById("staffPassword").value
+      });
 
-        if (!data || data.length === 0) {
-          rows.innerHTML =
-            '<tr><td colspan="6">No applications are available to this account.</td></tr>';
-          return;
-        }
+      if (error) throw error;
 
-        for (const application of data) {
+      currentStaffSession = data.session;
+      document.getElementById("staffPassword").value = "";
+      updateStaffUI();
+      await loadApplications();
+    } catch (error) {
+      currentStaffSession = null;
+      staffStatus.textContent = "Sign-in failed. Check your credentials and staff account.";
+      updateStaffUI();
+      staffLoginButton.disabled = false;
+    }
+  });
+
+  staffLogoutButton.addEventListener("click", async () => {
+    if (!supabaseClient) return;
+    const { error } = await supabaseClient.auth.signOut();
+    currentStaffSession = null;
+    applicationRows.replaceChildren();
+    recordsStatus.textContent = "";
+    updateStaffUI();
+    if (error) staffStatus.textContent = "Signed out locally; please verify the session status.";
+  });
+
+  loadApplicationsButton.addEventListener("click", loadApplications);
+
+  async function loadApplications() {
+    if (!supabaseClient || !currentStaffSession) {
+      recordsStatus.textContent = "Sign in first.";
+      return;
+    }
+
+    loadApplicationsButton.disabled = true;
+    recordsStatus.textContent = "Loading applications…";
+
+    try {
+      const { data, error } = await supabaseClient
+        .from("beneficiary_applications")
+        .select("id, reference_code, applicant_name, support_category, submitted_at, status")
+        .order("submitted_at", { ascending: false })
+        .limit(100);
+
+      if (error) throw error;
+
+      applicationRows.replaceChildren();
+
+      if (!data || data.length === 0) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+        cell.colSpan = 6;
+        cell.textContent = "No applications were returned, or the account has no access.";
+        row.appendChild(cell);
+        applicationRows.appendChild(row);
+      } else {
+        data.forEach((application) => {
           const row = document.createElement("tr");
 
-          const values = [
-            application.reference_code,
-            application.applicant_name,
-            application.support_category,
-            application.submitted_at
-              ? new Date(application.submitted_at).toLocaleString()
-              : "",
-            application.status
-          ];
-
-          for (const value of values) {
+          function addCell(value) {
             const cell = document.createElement("td");
-            cell.textContent = value || "";
+            cell.textContent = value == null ? "—" : String(value);
             row.appendChild(cell);
+            return cell;
           }
+
+          addCell(application.reference_code || application.id);
+          addCell(application.applicant_name);
+          addCell(application.support_category);
+          addCell(application.submitted_at
+            ? new Date(application.submitted_at).toLocaleString()
+            : "—");
+          addCell(application.status || "Pending");
 
           const actionCell = document.createElement("td");
           const statusSelect = document.createElement("select");
 
-          for (const status of [
-            "pending", "under_review", "approved", "declined", "closed"
-          ]) {
+          ["Pending", "Under Review", "Approved", "Declined"].forEach((status) => {
             const option = document.createElement("option");
             option.value = status;
-            option.textContent = status.replace("_", " ");
-            option.selected = status === application.status;
+            option.textContent = status;
             statusSelect.appendChild(option);
-          }
+          });
+
+          statusSelect.value = ["Pending", "Under Review", "Approved", "Declined"]
+            .includes(application.status) ? application.status : "Pending";
 
           const updateButton = document.createElement("button");
-          updateButton.className = "btn";
           updateButton.type = "button";
-          updateButton.textContent = "Save";
-          updateButton.style.marginTop = "8px";
+          updateButton.textContent = "Update";
+          updateButton.className = "outline";
 
-          updateButton.addEventListener("click", async function() {
+          updateButton.addEventListener("click", async () => {
             updateButton.disabled = true;
+            recordsStatus.textContent = "Updating status…";
 
             try {
-              const { error } = await client
+              const { error: updateError } = await supabaseClient
                 .from("beneficiary_applications")
                 .update({
                   status: statusSelect.value,
@@ -888,61 +1057,32 @@
                 })
                 .eq("id", application.id);
 
-              if (error) throw error;
+              if (updateError) throw updateError;
 
-              showMessage(
-                dashboardMessage,
-                "Status update accepted by the database.",
-                "success"
-              );
+              recordsStatus.textContent = "Status updated.";
               await loadApplications();
             } catch (error) {
-              showMessage(
-                dashboardMessage,
-                "Could not update status. Confirm that this account has staff-only update permission. " +
-                (error.message || ""),
-                "error"
-              );
-            } finally {
+              recordsStatus.textContent =
+                "Update failed. Check your table columns and staff-only update policy.";
               updateButton.disabled = false;
             }
           });
 
-          actionCell.appendChild(statusSelect);
-          actionCell.appendChild(updateButton);
+          actionCell.append(statusSelect, document.createTextNode(" "), updateButton);
           row.appendChild(actionCell);
-          rows.appendChild(row);
-        }
-      } catch (error) {
-        showMessage(
-          dashboardMessage,
-          "Records could not be loaded. Secure staff-only SELECT permission must be configured in Supabase. " +
-          (error.message || ""),
-          "error"
-        );
+          applicationRows.appendChild(row);
+        });
       }
+
+      recordsStatus.textContent = "Loaded " + (data ? data.length : 0) + " record(s).";
+    } catch (error) {
+      applicationRows.replaceChildren();
+      recordsStatus.textContent =
+        "Could not load records. Check the table name, column names, authentication and row-level security policies.";
+    } finally {
+      loadApplicationsButton.disabled = !currentStaffSession;
     }
-
-    document.getElementById("refreshApplications").addEventListener(
-      "click", loadApplications
-    );
-
-    document.getElementById("signOut").addEventListener(
-      "click", async function() {
-        try {
-          if (supabaseClient) {
-            await supabaseClient.auth.signOut();
-          }
-        } finally {
-          currentUser = null;
-          document.getElementById("staffDashboard").hidden = true;
-          document.getElementById("signOut").hidden = true;
-          clearMessage(staffMessage);
-          showMessage(staffMessage, "You have signed out.", "success");
-          document.getElementById("applicationRows").replaceChildren();
-        }
-      }
-    );
-  </script>
+  }
+</script>
 </body>
 </html>
