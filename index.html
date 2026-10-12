@@ -4,533 +4,1460 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="NGO WORLDWIDE LTD — humanitarian support, community development, worldwide cooperation, and logistics coordination information.">
-
-  <meta name="theme-color" content="#103b32">
-
-  <title>NGO WORLDWIDE LTD | Humanitarian Support & Global Logistics</title>
+  <title>NGO WORLDWIDE LTD | Global Humanitarian Support</title>
+  <meta name="description" content="NGO WORLDWIDE LTD — humanitarian support, community development, education, international cooperation and responsible logistics information.">
+  <meta name="theme-color" content="#0866ff">
 
   <style>
     :root {
-      --green: #103b32;
-      --green-light: #edf5ef;
-      --gold: #d8b45a;
-      --text: #243247;
-      --muted: #5e6b67;
+      --meta-blue: #0866ff;
+      --meta-blue-dark: #0648b8;
+      --meta-blue-light: #e7f0ff;
       --white: #ffffff;
-      --border: #dce5df;
+      --page: #f0f2f5;
+      --surface: #ffffff;
+      --text: #1c1e21;
+      --muted: #65676b;
+      --border: #dadde1;
+      --success: #18794e;
+      --radius: 16px;
+      --shadow: 0 5px 24px rgba(0, 0, 0, .07);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 24px;
+      scroll-padding-top: 88px;
     }
 
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
+      background: var(--page);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.65;
+    }
+
+    a { color: var(--meta-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    img { max-width: 100%; }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--meta-blue);
+      color: var(--white);
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+
+    button:hover, .button:hover {
+      background: var(--meta-blue-dark);
+      text-decoration: none;
+    }
+
+    button:focus-visible, a:focus-visible,
+    input:focus-visible, select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid #91b8ff;
+      outline-offset: 3px;
+    }
+
+    .button-outline {
       background: var(--white);
+      color: var(--meta-blue);
+      border: 1px solid var(--meta-blue);
     }
 
-    a {
-      overflow-wrap: anywhere;
+    .button-outline:hover {
+      background: var(--meta-blue-light);
+      color: var(--meta-blue-dark);
     }
 
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 4px;
+    .container {
+      width: min(1160px, 92%);
+      margin: auto;
+    }
+
+    .topbar {
+      background: var(--meta-blue-dark);
+      color: var(--white);
+      padding: 8px 0;
+      font-size: 13px;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     header {
-      background: var(--green);
-      color: var(--white);
-      padding: 24px 7%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
     }
 
     .brand {
-      margin: 0;
-      font-size: clamp(1.5rem, 4vw, 2.3rem);
-      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: var(--text);
     }
 
-    .tagline {
-      margin: 5px 0 16px;
-      color: #e5eee9;
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--meta-blue);
+      color: white;
+      font-size: 23px;
+      font-weight: 900;
+    }
+
+    .brand-name {
+      display: block;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -.4px;
+    }
+
+    .brand-tagline {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 4px;
     }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px 20px;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 15px;
     }
 
     nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: bold;
+      font-size: 13px;
+      font-weight: 700;
+      color: #34363a;
     }
 
-    nav a:hover {
-      color: var(--gold);
-    }
+    nav a:hover { color: var(--meta-blue); }
+
+    .menu-toggle { display: none; }
 
     .hero {
-      background: linear-gradient(135deg, #edf5ef, #f8f5e9);
-      padding: 76px 7%;
-      text-align: center;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(255,255,255,.2), transparent 28%),
+        linear-gradient(130deg, #0648b8, #0866ff 65%, #5897ff);
+      color: white;
+      padding: 86px 0 78px;
+      overflow: hidden;
     }
 
-    .hero h2 {
-      max-width: 900px;
-      margin: 0 auto 20px;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.2;
-      color: var(--green);
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -1.7px;
+      margin: 22px 0;
     }
 
     .hero p {
-      max-width: 720px;
-      margin: 0 auto 24px;
-      font-size: 1.1rem;
+      max-width: 650px;
+      color: #edf4ff;
+      font-size: 17px;
     }
 
-    .button {
-      display: inline-block;
-      background: var(--green);
-      color: var(--white);
-      padding: 12px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 5px;
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
     }
 
-    .button:hover {
-      background: #195447;
-    }
-
-    .button-secondary {
+    .hero .button { background: white; color: var(--meta-blue-dark); }
+    .hero .button-outline {
+      color: white;
+      border-color: rgba(255,255,255,.75);
       background: transparent;
-      color: var(--green);
-      border: 2px solid var(--green);
     }
 
-    .section {
-      padding: 48px 7%;
-      scroll-margin-top: 20px;
+    .hero-card {
+      background: white;
+      color: var(--text);
+      padding: 28px;
+      border-radius: 22px;
+      box-shadow: 0 20px 55px rgba(0,0,0,.18);
     }
 
-    .section h2 {
-      color: var(--green);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      line-height: 1.3;
-    }
+    .hero-card h2 { margin-top: 0; font-size: 23px; }
 
-    .section-intro {
-      max-width: 850px;
-      color: var(--muted);
-    }
+    .hero-card p { color: var(--muted); font-size: 14px; }
 
-    .soft-section {
-      background: #f7faf8;
-    }
-
-    .cards {
+    .hero-list {
       display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(min(100%, 230px), 1fr)
-      );
-      gap: 20px;
-      margin-top: 24px;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .hero-list div {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .check {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 30px;
+      border-radius: 9px;
+      background: var(--meta-blue-light);
+      color: var(--meta-blue);
+      font-weight: 900;
+    }
+
+    .hero-list strong { display: block; font-size: 14px; }
+    .hero-list small { color: var(--muted); }
+
+    .trust-strip {
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      padding: 22px 0;
+    }
+
+    .trust-item strong {
+      display: block;
+      color: var(--meta-blue-dark);
+      font-size: 15px;
+    }
+
+    .trust-item span { color: var(--muted); font-size: 13px; }
+
+    section { padding: 76px 0; }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--meta-blue);
+      background: var(--meta-blue-light);
+      border: 0;
+    }
+
+    h2 {
+      font-size: clamp(27px, 4vw, 38px);
+      line-height: 1.2;
+      letter-spacing: -.7px;
+      margin: 15px 0;
+    }
+
+    h3 { line-height: 1.3; }
+
+    .section-heading p, .muted { color: var(--muted); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .card {
-      padding: 24px;
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--white);
-      box-shadow: 0 4px 14px rgba(16, 59, 50, 0.04);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      min-width: 0;
     }
 
-    .card h3 {
-      color: var(--green);
-      margin-top: 0;
+    .card p { color: var(--muted); font-size: 14px; }
+    .card h3 { margin: 12px 0 8px; }
+
+    .icon-box {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      background: var(--meta-blue-light);
+      color: var(--meta-blue);
+      border-radius: 14px;
+      font-size: 24px;
     }
 
-    .icon {
-      font-size: 1.8rem;
-    }
+    .soft-section { background: #e9f1ff; }
 
     .notice {
-      border-left: 5px solid var(--gold);
-      background: #fbf8ed;
-      padding: 18px 20px;
-      margin-top: 24px;
-      border-radius: 4px;
+      border-left: 4px solid var(--meta-blue);
+      padding: 15px 17px;
+      border-radius: 8px;
+      background: #eaf2ff;
+      color: #173e78;
+      font-size: 14px;
     }
 
-    .steps {
-      padding-left: 24px;
+    .process-list {
+      counter-reset: steps;
+      display: grid;
+      gap: 20px;
     }
 
-    .steps li {
-      margin-bottom: 10px;
+    .process-step {
+      counter-increment: steps;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 13px;
+      background: white;
+      border: 1px solid var(--border);
     }
 
-    .contact-panel {
-      background: var(--green);
-      color: var(--white);
-      padding: 32px;
-      border-radius: 14px;
+    .process-step::before {
+      content: counter(steps, decimal-leading-zero);
+      display: grid;
+      place-items: center;
+      min-width: 44px;
+      height: 44px;
+      background: var(--meta-blue);
+      color: white;
+      border-radius: 12px;
+      font-weight: 900;
     }
 
-    .contact-panel h2,
-    .contact-panel h3 {
-      color: var(--white);
+    .process-step h3 { margin: 0 0 6px; }
+    .process-step p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .form-card {
+      max-width: 850px;
+      background: white;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
     }
 
-    .contact-panel a:not(.button) {
-      color: #f6d77e;
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .contact-panel .button {
-      background: var(--gold);
-      color: #1d2b25;
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+
+    label { font-size: 13px; font-weight: 800; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 13px;
+      background: white;
+      color: var(--text);
+      border: 1px solid #ccd0d5;
+      border-radius: 9px;
     }
 
-    footer {
-      background: #092820;
-      color: var(--white);
-      padding: 26px 7%;
+    textarea { resize: vertical; min-height: 110px; }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #e8f5ee;
+      color: #145c39;
+      overflow-wrap: anywhere;
+    }
+
+    .tracking-box {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .tracking-box input { flex: 1; min-width: 0; }
+
+    .status-label {
+      display: inline-block;
+      background: #fff1cf;
+      color: #765200;
+      border-radius: 7px;
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .branch-card small {
+      display: inline-block;
+      padding: 5px 8px;
+      background: var(--meta-blue-light);
+      color: var(--meta-blue-dark);
+      border-radius: 7px;
+      font-weight: 700;
+    }
+
+    .gallery-panel {
+      min-height: 210px;
+      display: grid;
+      place-items: center;
       text-align: center;
+      padding: 30px;
+      color: white;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #0648b8, #0866ff, #71a8ff);
     }
 
-    footer p {
-      margin: 8px 0;
+    .gallery-panel .gallery-symbol { font-size: 50px; }
+
+    .gallery-panel h3 { margin: 10px 0; }
+
+    .gallery-panel p {
+      max-width: 580px;
+      margin: 0 auto;
+      color: #edf4ff;
+      font-size: 14px;
     }
 
-    footer a {
-      color: #f6d77e;
+    .contact-link {
+      display: block;
+      padding: 14px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow-wrap: anywhere;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 22px 5%;
-      }
+    .contact-link strong { display: block; color: var(--text); }
+    .contact-link span { font-size: 13px; }
 
-      .hero,
-      .section {
-        padding: 38px 5%;
-      }
+    .footer {
+      background: #10213f;
+      color: white;
+      padding: 52px 0 20px;
+    }
 
-      .contact-panel {
-        padding: 22px;
-      }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 35px;
+    }
 
+    .footer p, .footer a { color: #d5e1f5; font-size: 14px; }
+    .footer h3 { margin-top: 0; }
+    .footer-links { display: grid; gap: 8px; }
+
+    .footer-bottom {
+      margin-top: 35px;
+      padding-top: 18px;
+      border-top: 1px solid #31415e;
+      color: #d5e1f5;
+      font-size: 12px;
+    }
+
+    .back-top {
+      position: fixed;
+      bottom: 20px;
+      right: 18px;
+      width: 45px;
+      height: 45px;
+      padding: 0;
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 1000px) {
+      .menu-toggle { display: inline-flex; }
       nav {
-        gap: 10px 15px;
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        padding: 20px 4%;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+      nav.open { display: flex; }
+      nav a { padding: 11px 0; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner { justify-content: center; text-align: center; }
+      .hero { padding: 60px 0; }
+      section { padding: 55px 0; }
+      .grid-2, .grid-3, .grid-4,
+      .trust-grid, .footer-grid, .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .field.full { grid-column: auto; }
+      .form-card { padding: 21px; }
+      .tracking-box { flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .brand-tagline { max-width: 220px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>NGO WORLDWIDE LTD · Humanitarian Support &amp; Community Development</span>
+      <span>Support: ngoworldwideltdcenter@gmail.com</span>
+    </div>
+  </div>
 
   <header>
-    <h1 class="brand">NGO WORLDWIDE LTD</h1>
-    <p class="tagline">
-      Compassion • Community • Worldwide Cooperation
-    </p>
+    <div class="container navbar">
+      <a class="brand" href="#home" aria-label="NGO WORLDWIDE LTD home">
+        <span class="brand-mark">N</span>
+        <span>
+          <span class="brand-name">NGO WORLDWIDE LTD</span>
+          <span class="brand-tagline">Building Hope. Supporting Communities.</span>
+        </span>
+      </a>
 
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#programs">Our Programs</a>
-      <a href="#logistics">Global Logistics</a>
-      <a href="#transparency">Transparency</a>
-      <a href="#contact">Contact</a>
-    </nav>
+      <button class="menu-toggle button-outline" id="menuToggle"
+        type="button" aria-expanded="false" aria-controls="mainNav">
+        ☰ Menu
+      </button>
+
+      <nav id="mainNav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#registration">Registration</a>
+        <a href="#logistics">Logistics</a>
+        <a href="#branches">Branches</a>
+        <a href="#transparency">Transparency</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-
+    <!-- HOME -->
     <section class="hero" id="home">
-      <h2>Building Hope, Supporting Communities</h2>
-
-      <p>
-        Working toward a world where compassion, cooperation,
-        responsible humanitarian initiatives, and community
-        support help people build better futures.
-      </p>
-
-      <a class="button" href="#programs">
-        Explore Our Mission
-      </a>
-
-      <a class="button button-secondary" href="#contact">
-        Contact Our Support Center
-      </a>
-    </section>
-
-    <section class="section" id="about">
-      <h2>About NGO WORLDWIDE LTD</h2>
-
-      <p class="section-intro">
-        NGO WORLDWIDE LTD aims to promote humanitarian support,
-        community development, kindness, cooperation, and
-        responsible service. Our goal is to encourage practical
-        efforts that respect human dignity and respond to
-        community needs.
-      </p>
-
-      <p>
-        Information about organizational registration, leadership,
-        partnerships, and activities should be published when
-        supported by authentic and verifiable records.
-      </p>
-    </section>
-
-    <section class="section soft-section" id="programs">
-      <h2>Our Areas of Focus</h2>
-
-      <p class="section-intro">
-        Our focus is on encouraging responsible community
-        initiatives and cooperation. The descriptions below
-        outline areas of focus and do not, by themselves,
-        confirm that a particular program is currently operating.
-      </p>
-
-      <div class="cards">
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">🤝</div>
-          <h3>Community Support</h3>
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Humanity · Service · Opportunity</span>
+          <h1>Building a better future, together.</h1>
           <p>
-            Encourage initiatives that respond to documented
-            community needs and promote dignity and inclusion.
+            NGO WORLDWIDE LTD aims to support communities through humanitarian
+            assistance, education, community development and responsible
+            international cooperation. Our goal is to connect people with
+            meaningful opportunities and accountable support programs.
           </p>
-        </article>
+          <div class="hero-actions">
+            <a class="button" href="#programs">Explore our programs →</a>
+            <a class="button button-outline" href="#contact">Contact support</a>
+          </div>
+        </div>
 
-        <article class="card">
-          <div class="icon" aria-hidden="true">💚</div>
-          <h3>Humanitarian Outreach</h3>
-          <p>
-            Promote compassion, responsible assistance,
-            and cooperation for the benefit of people in need.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">🌍</div>
-          <h3>Community Partnerships</h3>
-          <p>
-            Encourage cooperation with communities and
-            organizations pursuing shared humanitarian goals.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">📚</div>
-          <h3>Knowledge and Awareness</h3>
-          <p>
-            Share useful information that encourages
-            learning, understanding, and responsible action.
-          </p>
-        </article>
-
+        <aside class="hero-card">
+          <h2>Our commitment</h2>
+          <p>We aim to put people, dignity and accountability at the centre of our work.</p>
+          <div class="hero-list">
+            <div>
+              <span class="check">✓</span>
+              <span><strong>People-first support</strong><small>Programs designed around community needs.</small></span>
+            </div>
+            <div>
+              <span class="check">✓</span>
+              <span><strong>Responsible operations</strong><small>Clear procedures and documented decisions.</small></span>
+            </div>
+            <div>
+              <span class="check">✓</span>
+              <span><strong>Accountability</strong><small>Accurate records and transparent reporting.</small></span>
+            </div>
+            <div>
+              <span class="check">✓</span>
+              <span><strong>Global cooperation</strong><small>Partnerships established through verification.</small></span>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section class="section" id="logistics">
-      <h2>Global Logistics &amp; Worldwide Delivery</h2>
-
-      <p class="section-intro">
-        This section provides information for people interested
-        in logistics coordination and delivery enquiries.
-        Specific services depend on confirmed providers,
-        destination coverage, applicable regulations,
-        and service availability.
-      </p>
-
-      <div class="cards">
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">📦</div>
-          <h3>Parcel Coordination</h3>
-          <p>
-            Enquiries about parcel collection and delivery
-            arrangements through confirmed service providers.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">🚚</div>
-          <h3>Business Deliveries</h3>
-          <p>
-            Information enquiries concerning business,
-            community, and organizational shipments.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">✈️</div>
-          <h3>International Shipping</h3>
-          <p>
-            Information about exploring cross-border shipping
-            options, subject to customs requirements,
-            destination rules, and provider availability.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">🔎</div>
-          <h3>Shipment Enquiries</h3>
-          <p>
-            Contact our support center with questions about
-            available delivery options or an existing
-            arrangement. Tracking is available only when
-            supported by the confirmed carrier.
-          </p>
-        </article>
-
+    <div class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <strong>Humanitarian Support</strong>
+          <span>Programs for people and communities</span>
+        </div>
+        <div class="trust-item">
+          <strong>Responsible Logistics</strong>
+          <span>Clear shipment and delivery records</span>
+        </div>
+        <div class="trust-item">
+          <strong>Public Accountability</strong>
+          <span>Information subject to verification</span>
+        </div>
       </div>
+    </div>
 
-      <h3>How the Enquiry Process Works</h3>
-
-      <ol class="steps">
-        <li>
-          Contact our support center with your enquiry.
-        </li>
-        <li>
-          Provide only the shipment information necessary
-          to assess your request.
-        </li>
-        <li>
-          Ask for the provider's identity, service availability,
-          costs, and terms before agreeing to proceed.
-        </li>
-        <li>
-          Confirm the arrangement directly with the responsible
-          provider before sending any parcel or payment.
-        </li>
-      </ol>
-
-      <div class="notice">
-        <strong>Important service notice:</strong>
-        Publishing this information does not mean that
-        shipping, parcel collection, shipment tracking,
-        or delivery services are already active.
-        Confirm provider arrangements, prices, delivery
-        terms, and coverage before advertising or accepting
-        a booking.
-      </div>
-
-      <p>
-        <a class="button" href="#contact">
-          Make a Logistics Enquiry
-        </a>
-      </p>
-    </section>
-
-    <section class="section soft-section" id="transparency">
-      <h2>Transparency and Accountability</h2>
-
-      <p class="section-intro">
-        Trust depends on accurate information and responsible
-        communication. Organizational registration, leadership,
-        financial reports, partnerships, and program outcomes
-        should be supported by authentic documents and
-        verifiable information.
-      </p>
-
-      <div class="cards">
-
-        <article class="card">
-          <h3>Authentic Information</h3>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Who we are</span>
+          <h2>About NGO WORLDWIDE LTD</h2>
           <p>
-            Publish accurate organizational details and
-            correct information when necessary.
+            An organization website concept dedicated to humanitarian service,
+            community contribution, international cooperation and practical
+            opportunities for people in need.
           </p>
-        </article>
+        </div>
 
-        <article class="card">
-          <h3>Responsible Partnerships</h3>
-          <p>
-            Identify partnerships only when they have
-            been confirmed by the organizations involved.
-          </p>
-        </article>
+        <div class="grid-2">
+          <article class="card">
+            <div class="icon-box">🌍</div>
+            <h3>Our vision</h3>
+            <p>
+              To contribute to a world where communities have better access
+              to essential resources, knowledge, education and opportunities
+              for sustainable development.
+            </p>
+          </article>
 
-        <article class="card">
-          <h3>Clear Communication</h3>
-          <p>
-            Explain service terms, costs, limitations,
-            and responsibilities before commitments are made.
-          </p>
-        </article>
+          <article class="card">
+            <div class="icon-box">🤝</div>
+            <h3>Our mission</h3>
+            <p>
+              To develop responsible humanitarian programs, encourage
+              community participation, support vulnerable people and
+              collaborate with verified partners.
+            </p>
+          </article>
 
+          <article class="card">
+            <div class="icon-box">💙</div>
+            <h3>Our values</h3>
+            <p>
+              Compassion, honesty, respect, fairness, privacy, responsible
+              financial management and service to humanity.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon-box">📋</div>
+            <h3>Governance and legal identity</h3>
+            <p>
+              Official registration information, leadership appointments,
+              certificates and governing documents should be published
+              only after they have been verified.
+            </p>
+          </article>
+        </div>
+
+        <div class="notice" style="margin-top:24px">
+          <strong>Public verification notice:</strong>
+          This website does not by itself establish legal registration,
+          charitable status, tax exemption or government endorsement.
+          Official documents and registration numbers must be independently
+          confirmed before being represented as verified.
+        </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
-      <div class="contact-panel">
-        <h2>Contact Our Support Center</h2>
+    <!-- PROGRAMS -->
+    <section class="soft-section" id="programs">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">What we aim to do</span>
+          <h2>Humanitarian programs and community services</h2>
+          <p>
+            Proposed areas of service. Actual assistance depends on approved
+            programs, available resources, eligibility requirements and
+            operational capacity.
+          </p>
+        </div>
 
-        <p>
-          For general enquiries, community initiatives,
-          partnership questions, or logistics information,
-          contact us using the details below.
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon-box">🥫</div>
+            <h3>Food and essential supplies</h3>
+            <p>Support initiatives for food, clothing, hygiene products and other essential items.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">📚</div>
+            <h3>Education and skills</h3>
+            <p>Learning resources, digital skills, educational assistance and vocational development.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">🏘️</div>
+            <h3>Community development</h3>
+            <p>Community-led improvement projects, practical resources and local capacity building.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">🩺</div>
+            <h3>Health and emergency relief</h3>
+            <p>Responsible assistance initiatives coordinated with appropriate service providers.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">💻</div>
+            <h3>Technology access</h3>
+            <p>Potential digital equipment and training support based on program availability.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">🌱</div>
+            <h3>Livelihood development</h3>
+            <p>Skills, enterprise education and community projects intended to improve long-term opportunities.</p>
+          </article>
+        </div>
+
+        <div class="notice" style="margin-top:24px">
+          Applications do not guarantee funding, a cash award, a vehicle,
+          electronics, jewellery, gold or any other item. Assistance must
+          be confirmed through an authorized, documented program.
+        </div>
+      </div>
+    </section>
+
+    <!-- ORGANIZATION REGISTRATION -->
+    <section id="organization-registration">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Organization governance</span>
+          <h2>Organization registration and compliance</h2>
+          <p>
+            Keep the organization's own legal registration separate from
+            participant applications and humanitarian program registration.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Establish the legal identity</h3>
+            <div class="process-list">
+              <div class="process-step">
+                <div>
+                  <h3>Confirm the legal structure</h3>
+                  <p>Choose the appropriate legal entity and jurisdiction with qualified local guidance.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div>
+                  <h3>Check the organization name</h3>
+                  <p>Confirm name availability and complete the required filing with the relevant authority.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div>
+                  <h3>Prepare governance documents</h3>
+                  <p>Prepare the governing instrument, leadership details, official address and required declarations.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div>
+                  <h3>Submit and verify</h3>
+                  <p>Submit the required application, satisfy applicable requirements and retain the official confirmation.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Public legal information register</h3>
+            <p>Complete this section with verified details before publishing it as an official record.</p>
+            <ul>
+              <li>Registered legal name</li>
+              <li>Jurisdiction and registering authority</li>
+              <li>Registration or incorporation number</li>
+              <li>Date of registration</li>
+              <li>Registered office address</li>
+              <li>Charity or tax status, if applicable</li>
+              <li>Public verification link or document</li>
+              <li>Authorized leadership and governance information</li>
+            </ul>
+            <div class="notice">
+              <strong>Status:</strong> Legal registration details have not
+              been verified through this webpage. Do not enter invented
+              numbers or present pending applications as completed registration.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTICIPANT REGISTRATION -->
+    <section class="soft-section" id="registration">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Participant services</span>
+          <h2>Participant and beneficiary application</h2>
+          <p>
+            This section demonstrates the intended application form.
+            It is not connected to a live database and must not be used
+            to submit real personal or sensitive information yet.
+          </p>
+        </div>
+
+        <div class="form-card">
+          <form id="applicationForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="appName">Full name</label>
+                <input id="appName" name="name" autocomplete="name"
+                  required maxlength="100" placeholder="Enter your name">
+              </div>
+
+              <div class="field">
+                <label for="appEmail">Email address</label>
+                <input id="appEmail" name="email" type="email"
+                  autocomplete="email" required maxlength="150"
+                  placeholder="you@example.com">
+              </div>
+
+              <div class="field">
+                <label for="appCountry">Country</label>
+                <input id="appCountry" name="country" required
+                  maxlength="80" placeholder="Country of residence">
+              </div>
+
+              <div class="field">
+                <label for="appType">Support category</label>
+                <select id="appType" name="supportType" required>
+                  <option value="">Select a category</option>
+                  <option>Food and essential supplies</option>
+                  <option>Education and skills</option>
+                  <option>Community development</option>
+                  <option>Health and emergency support</option>
+                  <option>Technology assistance</option>
+                  <option>Livelihood development</option>
+                  <option>Other inquiry</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="appMessage">Brief description of your request</label>
+                <textarea id="appMessage" name="message" required
+                  maxlength="1000"
+                  placeholder="Describe the assistance or information you are seeking. Do not include sensitive personal details."></textarea>
+              </div>
+
+              <div class="field full">
+                <label>
+                  <input type="checkbox" id="appConsent" required
+                    style="width:auto; margin-right:7px">
+                  I understand that this is a demonstration form and no real application will be submitted or saved.
+                </label>
+              </div>
+            </div>
+
+            <p class="form-note">
+              This demonstration does not transmit your form data. A secure
+              backend, privacy notice and authorized application process
+              are required before collecting real applications.
+            </p>
+
+            <button type="submit">Demonstrate reference code</button>
+          </form>
+
+          <div class="result" id="applicationResult" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGISTICS -->
+    <section id="logistics">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Global logistics</span>
+          <h2>Shipment and delivery information</h2>
+          <p>
+            A proposed logistics information centre for authorized shipments,
+            humanitarian supplies and approved delivery operations.
+            Courier services must be arranged separately.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon-box">📦</div>
+            <h3>Shipment records</h3>
+            <p>Record authorized items, dispatch dates, courier details and shipment references.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">🚚</div>
+            <h3>Delivery coordination</h3>
+            <p>Assign authorized staff, record delivery instructions and document service updates.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">🛡️</div>
+            <h3>Delivery verification</h3>
+            <p>Maintain genuine courier tracking details, recipient confirmation and incident records.</p>
+          </article>
+        </div>
+
+        <div class="card" style="margin-top:24px">
+          <h3>Shipment tracking interface</h3>
+          <p>
+            Enter a reference only when using a connected, verified tracking
+            system. This standalone page cannot retrieve live courier records.
+          </p>
+          <form id="trackingForm">
+            <div class="tracking-box">
+              <input id="trackingCode" required maxlength="100"
+                placeholder="Enter a shipment tracking number">
+              <button type="submit">Check information</button>
+            </div>
+          </form>
+          <div class="result" id="trackingResult" role="status" aria-live="polite"></div>
+          <p class="form-note">
+            No shipment lookup is performed here. Connect a real courier
+            integration or secure shipment database to activate this feature.
+          </p>
+        </div>
+
+        <div class="notice" style="margin-top:24px">
+          <strong>Delivery safety:</strong> Confirm the courier and shipment
+          directly with the provider. Do not pay unexpected release,
+          customs, insurance or delivery charges based only on a message
+          or a reference number displayed on an unverified website.
+        </div>
+      </div>
+    </section>
+
+    <!-- BRANCHES -->
+    <section class="soft-section" id="branches">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">International coordination</span>
+          <h2>Headquarters and branch directory</h2>
+          <p>
+            The following locations are proposed for organizational planning.
+            A location is not proof that an office exists or is operational.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card branch-card">
+            <div class="icon-box">🇺🇸</div>
+            <h3>United States</h3>
+            <p>Headquarters and regional office details pending verification.</p>
+            <small>Details to be confirmed</small>
+          </article>
+
+          <article class="card branch-card">
+            <div class="icon-box">🇬🇧</div>
+            <h3>United Kingdom</h3>
+            <p>Proposed regional coordination and community support.</p>
+            <small>Proposed location</small>
+          </article>
+
+          <article class="card branch-card">
+            <div class="icon-box">🇨🇦</div>
+            <h3>Canada</h3>
+            <p>Proposed regional coordination and partnership activities.</p>
+            <small>Proposed location</small>
+          </article>
+
+          <article class="card branch-card">
+            <div class="icon-box">🇸🇦</div>
+            <h3>Saudi Arabia</h3>
+            <p>Proposed regional coordination, subject to applicable rules.</p>
+            <small>Proposed location</small>
+          </article>
+
+          <article class="card branch-card">
+            <div class="icon-box">🇳🇬</div>
+            <h3>Nigeria</h3>
+            <p>Proposed community engagement and humanitarian coordination.</p>
+            <small>Details to be confirmed</small>
+          </article>
+
+          <article class="card branch-card">
+            <div class="icon-box">🌐</div>
+            <h3>Other countries</h3>
+            <p>Additional locations may be listed after local authorization and verification.</p>
+            <small>Future expansion</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section id="partners">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Working together</span>
+          <h2>Partners, sponsors and community supporters</h2>
+          <p>
+            We welcome responsible cooperation with eligible businesses,
+            institutions, community organizations and individual donors.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <div class="icon-box">🤝</div>
+            <h3>Partnership opportunities</h3>
+            <ul>
+              <li>Community development initiatives</li>
+              <li>Education and technology access</li>
+              <li>Humanitarian supply support</li>
+              <li>Professional and technical volunteering</li>
+              <li>Documented grants and sponsorships</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="icon-box">🔎</div>
+            <h3>Partner verification</h3>
+            <p>
+              Public partner names, logos, financial contributions and
+              endorsements should be displayed only with evidence and
+              appropriate authorization.
+            </p>
+            <a class="button" href="#contact">Contact the support centre</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT GALLERY -->
+    <section class="soft-section" id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Community stories</span>
+          <h2>Projects and impact gallery</h2>
+          <p>
+            Use this area for genuine project photos, authorized videos,
+            documented handovers and community stories.
+          </p>
+        </div>
+
+        <div class="gallery-panel" id="galleryPanel" aria-live="polite">
+          <div>
+            <div class="gallery-symbol" id="gallerySymbol">🌍</div>
+            <h3 id="galleryTitle">Community development</h3>
+            <p id="galleryDescription">
+              Add an authentic project photograph, a verified event summary
+              and the date after the activity has taken place.
+            </p>
+          </div>
+        </div>
+
+        <p class="form-note" style="margin-top:14px">
+          This demonstration panel changes its informational message every
+          five minutes. It does not announce new awards, recipients,
+          sponsorships or deliveries. Add real media only after verification
+          and obtain consent from identifiable people.
         </p>
-
-        <p>
-          <strong>Support Center Email:</strong><br>
-          <a href="mailto:ngoworldwideltdcenter@gmail.com">
-            ngoworldwideltdcenter@gmail.com
-          </a>
-        </p>
-
-        <a
-          class="button"
-          href="mailto:ngoworldwideltdcenter@gmail.com?subject=NGO%20WORLDWIDE%20LTD%20Enquiry"
-        >
-          Email Our Support Center
-        </a>
-
-        <p>
-          Please do not send passwords, bank PINs, or other
-          confidential financial credentials by email.
-        </p>
       </div>
     </section>
 
+    <!-- TRANSPARENCY -->
+    <section id="transparency">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Accountability</span>
+          <h2>Finance, governance and transparency</h2>
+          <p>
+            Responsible records help the public understand how resources
+            are received, managed and used.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon-box">📊</div>
+            <h3>Financial reporting</h3>
+            <p>Publish accurate financial statements, program budgets and expenditure summaries when available.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">🧾</div>
+            <h3>Procurement and assets</h3>
+            <p>Document purchasing decisions, inventory, donated assets and transfers.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">🔐</div>
+            <h3>Privacy and safeguarding</h3>
+            <p>Protect participant information and restrict access to authorized personnel.</p>
+          </article>
+        </div>
+
+        <div class="notice" style="margin-top:24px">
+          Publish audited reports, legal documents, project results and
+          verified statistics when they are available. Do not invent
+          donations, beneficiaries, awards, financial balances or outcomes.
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMINISTRATION -->
+    <section id="administration" class="soft-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Operations</span>
+          <h2>Organization management system</h2>
+          <p>
+            The following modules are planned for a secure, staff-only
+            dashboard. They are not activated by this public HTML file.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <article class="card">
+            <div class="icon-box">👥</div>
+            <h3>Applications</h3>
+            <p>Review submissions, eligibility, follow-up requests and decisions.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">🚛</div>
+            <h3>Logistics</h3>
+            <p>Manage authorized shipments, assigned drivers and delivery evidence.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">💰</div>
+            <h3>Finance</h3>
+            <p>Manage donations, approved budgets, expenses and financial reports.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">⚙️</div>
+            <h3>Staff and branches</h3>
+            <p>Manage authorized accounts, roles, permissions and branch information.</p>
+          </article>
+        </div>
+
+        <div class="notice" style="margin-top:24px">
+          Never place administrator passwords, database secret keys or
+          private participant records inside public HTML or a public
+          GitHub repository. Implement authentication, server-side
+          authorization, access logs and secure backups before launch.
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Get in touch</span>
+          <h2>Contact NGO WORLDWIDE LTD</h2>
+          <p>
+            Contact the support centre for general inquiries, program
+            information, partnership proposals and website assistance.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="grid-2">
+            <a class="contact-link"
+              href="mailto:ngoworldwideltdcenter@gmail.com">
+              <strong>✉ Email support</strong>
+              <span>ngoworldwideltdcenter@gmail.com</span>
+            </a>
+
+            <a class="contact-link"
+              href="https://wa.me/14355541719"
+              target="_blank" rel="noopener noreferrer">
+              <strong>💬 WhatsApp messaging</strong>
+              <span>+1 435-554-1719 · Messages only requested</span>
+            </a>
+
+            <a class="contact-link" href="sms:+14355541719">
+              <strong>📱 SMS support</strong>
+              <span>+1 435-554-1719</span>
+            </a>
+
+            <div class="contact-link">
+              <strong>🕒 Response times</strong>
+              <span>Response times depend on staff availability. A reply is not guaranteed immediately.</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Send an email</h3>
+            <p>
+              Use the button below to open your email application.
+              No information is submitted to this website.
+            </p>
+            <a class="button"
+              href="mailto:ngoworldwideltdcenter@gmail.com?subject=NGO%20WORLDWIDE%20LTD%20Inquiry">
+              Email the support centre →
+            </a>
+            <p class="form-note" style="margin-top:18px">
+              Do not email passwords, bank PINs or unnecessary sensitive
+              identity documents. Confirm the recipient before sending
+              personal information.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>
-      <strong>NGO WORLDWIDE LTD</strong>
-    </p>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>NGO WORLDWIDE LTD</h3>
+          <p>
+            Building Hope. Supporting Communities. Creating Opportunities
+            Worldwide.
+          </p>
+          <p>
+            Humanitarian support, community development and responsible
+            international cooperation.
+          </p>
+        </div>
 
-    <p>
-      Compassion • Community • Worldwide Cooperation
-    </p>
+        <div>
+          <h3>Quick links</h3>
+          <div class="footer-links">
+            <a href="#about">About the organization</a>
+            <a href="#programs">Humanitarian programs</a>
+            <a href="#organization-registration">Organization registration</a>
+            <a href="#registration">Participant application</a>
+            <a href="#logistics">Global logistics</a>
+            <a href="#transparency">Transparency</a>
+          </div>
+        </div>
 
-    <p>
-      Website information should accurately reflect
-      verified organizational activities and services.
-    </p>
+        <div>
+          <h3>Support centre</h3>
+          <div class="footer-links">
+            <a href="mailto:ngoworldwideltdcenter@gmail.com">
+              ngoworldwideltdcenter@gmail.com
+            </a>
+            <a href="https://wa.me/14355541719"
+              target="_blank" rel="noopener noreferrer">
+              WhatsApp messages
+            </a>
+            <a href="sms:+14355541719">SMS support</a>
+            <a href="#contact">Contact information</a>
+          </div>
+        </div>
+      </div>
 
-    <p>
-      &copy; 2026 NGO WORLDWIDE LTD. All rights reserved.
-    </p>
+      <div class="footer-bottom">
+        <p>
+          © <span id="currentYear"></span> NGO WORLDWIDE LTD.
+          All rights reserved.
+        </p>
+        <p>
+          Website information, program availability, legal status,
+          partnerships and logistics services must be independently verified.
+          Application and tracking demonstrations do not constitute approval
+          of benefits or confirmation of shipment.
+        </p>
+      </div>
+    </div>
   </footer>
 
+  <button class="back-top" type="button"
+    aria-label="Back to top"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Footer year
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    // Demonstration application reference.
+    // It is generated in the browser only and is NOT saved to a database.
+    document.getElementById("applicationForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (!this.reportValidity()) return;
+
+        const randomPart = Math.random()
+          .toString(36)
+          .slice(2, 10)
+          .toUpperCase();
+
+        const demoCode = "DEMO-NGW-" + randomPart;
+        const result = document.getElementById("applicationResult");
+
+        result.style.display = "block";
+        result.innerHTML = "";
+
+        const heading = document.createElement("strong");
+        heading.textContent = "Demonstration reference: " + demoCode;
+
+        const message = document.createElement("p");
+        message.textContent =
+          "This is a temporary demonstration code only. Your form was not sent or saved. This code cannot be used to claim assistance or track an application.";
+
+        result.appendChild(heading);
+        result.appendChild(message);
+      });
+
+    // Demonstration tracking form; no real shipment lookup is performed.
+    document.getElementById("trackingForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const code = document.getElementById("trackingCode")
+          .value.trim();
+
+        const result = document.getElementById("trackingResult");
+        result.style.display = "block";
+        result.innerHTML = "";
+
+        const heading = document.createElement("strong");
+        heading.textContent = "Tracking service not connected";
+
+        const message = document.createElement("p");
+        message.textContent =
+          "No live shipment information is available on this demonstration website. Reference entered: " +
+          code +
+          ". Please confirm any shipment directly with the courier or authorized service provider.";
+
+        result.appendChild(heading);
+        result.appendChild(message);
+      });
+
+    // Rotating informational gallery. These are sample messages,
+    // not claims of completed deliveries, awards or real events.
+    const gallerySlides = [
+      {
+        symbol: "🌍",
+        title: "Community development",
+        description:
+          "Publish verified information about a real community project, its location, date and outcomes."
+      },
+      {
+        symbol: "📚",
+        title: "Education and opportunity",
+        description:
+          "Share documented education initiatives and learning opportunities that are actually available."
+      },
+      {
+        symbol: "🤝",
+        title: "Humanitarian cooperation",
+        description:
+          "Recognize authorized partners and volunteers after their participation has been confirmed."
+      },
+      {
+        symbol: "📦",
+        title: "Responsible logistics",
+        description:
+          "Show genuine, consented project or delivery documentation only after verification."
+      }
+    ];
+
+    let galleryIndex = 0;
+
+    function rotateGallery() {
+      galleryIndex = (galleryIndex + 1) % gallerySlides.length;
+      const slide = gallerySlides[galleryIndex];
+
+      document.getElementById("gallerySymbol").textContent = slide.symbol;
+      document.getElementById("galleryTitle").textContent = slide.title;
+      document.getElementById("galleryDescription").textContent =
+        slide.description;
+    }
+
+    // Changes the informational panel every five minutes.
+    // This does not create new events or deliveries.
+    window.setInterval(rotateGallery, 300000);
+  </script>
 </body>
-</html>
+        </html>
